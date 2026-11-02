@@ -194,3 +194,314 @@ h1,h2,h3
         font-size: 15px;
         color: #dbe4ee;
     }
+
+/* =========================================
+   1. SMALL MOBILE PHONES
+   iPhone SE, small Android phones
+   Width: 320px - 374px
+========================================= */
+@media screen and (max-width: 374px) {
+    body {
+        min-height: 100dvh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    .book {
+        width: 90vw;
+        height: 72dvh;
+        perspective: 1200px;
+    }
+
+        .book.expanded {
+            width: 94vw;
+        }
+
+    .front,
+    .back {
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .front {
+        font-size: 11px;
+        letter-spacing: 0.5px;
+    }
+
+    .back {
+        padding: 12px;
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    .controls {
+        bottom: 12px;
+        gap: 6px;
+    }
+
+    button {
+        padding: 9px 12px;
+        font-size: 11px;
+    }
+
+    .page-number {
+        bottom: 10px;
+        right: 12px;
+        font-size: 10px;
+    }
+
+    .video-overlay {
+        padding: 12px;
+    }
+
+        .video-overlay h2 {
+            font-size: 17px;
+        }
+
+        .video-overlay p {
+            font-size: 11px;
+        }
+}
+
+
+/* =========================================
+   2. STANDARD MOBILE PHONES
+   iPhone 12/13 mini, common Android phones
+   Width: 375px - 479px
+========================================= */
+@media screen and (min-width: 375px) and (max-width: 479px) {
+    body {
+        min-height: 100dvh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    .book {
+        width: 88vw;
+        height: 74dvh;
+        perspective: 1500px;
+    }
+
+        .book.expanded {
+            width: 94vw;
+        }
+
+    .front,
+    .back {
+        padding: 15px;
+    }
+
+    .front {
+        font-size: 12px;
+    }
+
+    .back {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .controls {
+        bottom: 16px;
+        gap: 8px;
+    }
+
+    button {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
+
+    .page-number {
+        bottom: 14px;
+        right: 16px;
+        font-size: 11px;
+    }
+
+    .video-overlay {
+        padding: 16px;
+    }
+
+        .video-overlay h2 {
+            font-size: 20px;
+        }
+
+        .video-overlay p {
+            font-size: 12px;
+        }
+}
+
+
+/* =========================================
+   3. LARGE MOBILE PHONES
+   iPhone Pro Max, large Android phones
+   Width: 480px - 599px
+========================================= */
+@media screen and (min-width: 480px) and (max-width: 599px) {
+    body {
+        min-height: 100dvh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    .book {
+        width: 82vw;
+        height: 76dvh;
+        perspective: 1800px;
+    }
+
+        .book.expanded {
+            width: 92vw;
+        }
+
+    .front,
+    .back {
+        padding: 18px;
+    }
+
+    .front {
+        font-size: 13px;
+    }
+
+    .back {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .controls {
+        bottom: 20px;
+        gap: 10px;
+    }
+
+    button {
+        padding: 11px 20px;
+        font-size: 13px;
+    }
+
+    .page-number {
+        bottom: 18px;
+        right: 20px;
+    }
+
+    .video-overlay h2 {
+        font-size: 23px;
+    }
+
+    .video-overlay p {
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================
+   4. SMALL TABLETS / LARGE PHONES
+   Portrait tablets and foldable devices
+   Width: 600px - 767px
+========================================= */
+@media screen and (min-width: 600px) and (max-width: 767px) {
+    body {
+        min-height: 100dvh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    .book {
+        width: min(76vw, 520px);
+        height: 78dvh;
+        perspective: 2000px;
+    }
+
+        .book.expanded {
+            width: min(88vw, 650px);
+        }
+
+    .front,
+    .back {
+        padding: 22px;
+    }
+
+    .front {
+        font-size: 14px;
+    }
+
+    .back {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .controls {
+        bottom: 24px;
+        gap: 12px;
+    }
+
+    button {
+        padding: 12px 22px;
+        font-size: 14px;
+    }
+
+    .video-overlay h2 {
+        font-size: 25px;
+    }
+
+    .video-overlay p {
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================
+   5. TABLETS / SMALL LAPTOPS
+   iPad portrait and similar devices
+   Width: 768px - 1024px
+========================================= */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    body {
+        min-height: 100dvh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    .book {
+        width: min(65vw, 520px);
+        height: 82dvh;
+        perspective: 2200px;
+    }
+
+        .book.expanded {
+            width: min(78vw, 650px);
+        }
+
+    .front,
+    .back {
+        padding: 25px;
+    }
+
+    .front {
+        font-size: 14px;
+    }
+
+    .back {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .controls {
+        bottom: 28px;
+        gap: 14px;
+    }
+
+    button {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
+    .video-overlay {
+        padding: 22px;
+    }
+
+        .video-overlay h2 {
+            font-size: 26px;
+        }
+
+        .video-overlay p {
+            font-size: 14px;
+        }
+}
