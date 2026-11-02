@@ -203,63 +203,88 @@
     </div>
 
     <script>
+
+
         $(document).ready(function () {
 
             let current = 0;
+
             const pages = $(".page");
             const total = pages.length;
 
-            // NEXT
-            $("#next").click(function () {
+            const isMobile = () => window.innerWidth <= 767;
+
+            // INITIAL STACKING
+            function initializePages() {
+                pages.each(function (index) {
+                    $(this).css("z-index", total - index);
+                });
+            }
+
+            initializePages();
+
+            // NEXT PAGE
+            function nextPage() {
 
                 if (current < total) {
 
-                    $(pages[current]).addClass("flipped");
-
-                    $(pages[current]).css(
-                        "z-index",
-                        current + 1
-                    );
+                    $(pages[current])
+                        .addClass("flipped")
+                        .css("z-index", current + 1);
 
                     current++;
                 }
-            });
+            }
 
-            // PREV
-            $("#prev").click(function () {
+            // PREVIOUS PAGE
+            function prevPage() {
 
                 if (current > 0) {
 
                     current--;
 
-                    $(pages[current]).removeClass("flipped");
-
-                    $(pages[current]).css(
-                        "z-index",
-                        total - current
-                    );
+                    $(pages[current])
+                        .removeClass("flipped")
+                        .css("z-index", total - current);
                 }
+            }
+
+            // NEXT BUTTON
+            $("#next").click(function (e) {
+                e.stopPropagation();
+                nextPage();
+            });
+
+            // PREVIOUS BUTTON
+            $("#prev").click(function (e) {
+                e.stopPropagation();
+                prevPage();
             });
 
             // EXPAND / COLLAPSE
-            $("#expand").click(function () {
-
+            $("#expand").click(function (e) {
+                e.stopPropagation();
                 $("#book").toggleClass("expanded");
-
             });
 
-            // CLICK PAGE TO FLIP
-            $(".page").click(function () {
+            // CLICK TO FLIP ON DESKTOP ONLY
+            pages.click(function () {
 
-                if (!$(this).hasClass("flipped")) {
-                    $(this).addClass("flipped");
-                } else {
-                    $(this).removeClass("flipped");
+                if (isMobile()) return;
+
+                const index = pages.index(this);
+
+                if (index === current && current < total) {
+                    nextPage();
                 }
-
+                else if (index === current - 1 && current > 0) {
+                    prevPage();
+                }
             });
 
         });
+
+
     </script>
 
 </body>

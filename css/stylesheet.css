@@ -391,12 +391,12 @@ h1,h2,h3
 }
 
 
+
 /* =========================================
-   MOBILE FLIP BOOK RESPONSIVE DESIGN
-   Single-page mode for mobile devices
+   MOBILE TWO-PAGE BOOK
+   Physical sheet turns from right to left
 ========================================= */
 
-/* GENERAL MOBILE FIX */
 @media screen and (max-width: 767px) {
 
     html, body {
@@ -412,215 +412,174 @@ h1,h2,h3
         align-items: center;
     }
 
-    /* BOOK */
+    /* BOOK SPREAD */
     .book,
     .book.expanded {
-        width: min(90vw, 520px);
-        height: min(76dvh, 720px);
-        margin: auto;
-        perspective: 1600px;
-        transform: none;
+        position: relative;
+        width: 96vw;
+        height: min(70dvh, 600px);
+        perspective: 1800px;
+        margin: 0 auto;
     }
 
-    /* EACH PAGE */
+    /* ALL PHYSICAL SHEETS START ON RIGHT */
     .page {
-        width: 100%;
+        position: absolute;
+        width: 50%;
         height: 100%;
-        left: 0;
+        top: 0;
+        left: 50%;
         transform-origin: left center;
+        transform-style: preserve-3d;
+        transition: transform 1s cubic-bezier(.77,0,.18,1);
     }
 
-    /* FRONT AND BACK */
+        /* TURN SHEET TO LEFT */
+        .page.flipped {
+            transform: rotateY(-180deg);
+        }
+
+    /* BOTH SIDES */
     .front,
     .back {
+        position: absolute;
         width: 100%;
         height: 100%;
-        border-radius: 7px;
-        padding: 16px;
+        padding: 10px;
         overflow: hidden;
+        border-radius: 4px;
+        backface-visibility: hidden;
     }
 
     .front {
-        font-size: 12px;
+        background: linear-gradient(145deg, #1e293b, #334155);
+        font-size: 10px;
     }
 
     .back {
-        font-size: 12px;
-        line-height: 1.6;
+        background: linear-gradient(145deg, #0f172a, #111827);
+        transform: rotateY(180deg);
+        font-size: 10px;
+        line-height: 1.4;
     }
 
-    /* EVEN AND ODD PAGES:
-       Keep both within the mobile book */
-    .page:nth-child(even),
-    .page:nth-child(odd) {
-        left: 0;
-    }
+        /* IMAGES */
+        .front img,
+        .back img {
+            max-width: 100%;
+            max-height: 90%;
+            object-fit: contain;
+        }
 
-    /* CONTROLS */
-    .controls {
-        position: fixed;
-        bottom: max(12px, env(safe-area-inset-bottom));
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        justify-content: center;
-        gap: 8px;
-        z-index: 9999;
-    }
-
-    button {
-        padding: 10px 16px;
-        font-size: 12px;
-        white-space: nowrap;
-    }
-
-    /* PAGE NUMBER */
-    .page-number {
-        bottom: 12px;
-        right: 14px;
-        font-size: 11px;
-    }
-
-    /* IMAGES */
-    .front img,
-    .back img,
     .tallimage {
-        max-width: 100%;
+        width: 100%;
         height: auto;
+        max-height: 85%;
+        object-fit: contain;
     }
 
     .circleimage {
         max-width: 45%;
     }
 
-    /* VIDEO */
-    .video-page {
-        border-radius: 7px;
+    /* PAGE NUMBERS */
+    .page-number {
+        bottom: 10px;
+        right: 8px;
+        font-size: 9px;
     }
 
+    /* VIDEO */
+    .video-page {
+        width: 100%;
+        height: 100%;
+    }
+
+        .video-wrapper iframe,
+        .video-page iframe {
+            width: 100%;
+            height: 100%;
+        }
+
     .video-overlay {
-        padding: 14px;
+        padding: 8px;
     }
 
         .video-overlay h2 {
-            font-size: 19px;
+            font-size: 14px;
         }
 
         .video-overlay p {
-            font-size: 12px;
+            font-size: 10px;
         }
+
+    /* CONTROLS */
+    .controls {
+        position: fixed;
+        left: 50%;
+        bottom: max(12px, env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        gap: 7px;
+        width: 100%;
+        z-index: 9999;
+    }
+
+    button {
+        padding: 9px 13px;
+        font-size: 11px;
+    }
 }
 
 
-/* =========================================
-   1. SMALL PHONES: 320px - 374px
-========================================= */
+/* SMALL PHONES */
 @media screen and (max-width: 374px) {
     .book,
     .book.expanded {
-        width: 92vw;
-        height: 70dvh;
+        width: 98vw;
+        height: 62dvh;
     }
 
     .front,
     .back {
-        padding: 10px;
-    }
-
-    .front {
-        font-size: 10px;
-    }
-
-    .back {
-        font-size: 10px;
-        line-height: 1.4;
-    }
-
-    button {
-        padding: 8px 11px;
-        font-size: 10px;
+        padding: 6px;
+        font-size: 9px;
     }
 }
 
 
-/* =========================================
-   2. STANDARD PHONES: 375px - 479px
-========================================= */
+/* STANDARD PHONES */
 @media screen and (min-width: 375px) and (max-width: 479px) {
     .book,
     .book.expanded {
-        width: 90vw;
-        height: 73dvh;
+        width: 96vw;
+        height: 66dvh;
     }
 }
 
 
-/* =========================================
-   3. LARGE PHONES: 480px - 599px
-========================================= */
+/* LARGE PHONES */
 @media screen and (min-width: 480px) and (max-width: 599px) {
     .book,
     .book.expanded {
-        width: 85vw;
-        height: 76dvh;
-    }
-
-    .front,
-    .back {
-        padding: 18px;
+        width: 94vw;
+        height: 70dvh;
     }
 }
 
 
-/* =========================================
-   4. SMALL TABLETS: 600px - 767px
-========================================= */
+/* SMALL TABLETS */
 @media screen and (min-width: 600px) and (max-width: 767px) {
     .book,
     .book.expanded {
-        width: 78vw;
-        height: 78dvh;
+        width: 94vw;
+        height: 75dvh;
     }
 
     .front,
     .back {
-        padding: 22px;
+        padding: 14px;
+        font-size: 11px;
     }
-}
-
-
-/* =========================================
-   5. TABLETS: 768px - 1024px
-========================================= */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    .book {
-        width: min(65vw, 520px);
-        height: 82dvh;
-    }
-
-        .book.expanded {
-            width: min(78vw, 650px);
-        }
-}
-
-
-/* =========================================
-   LANDSCAPE MOBILE
-========================================= */
-@media screen and (max-width: 767px) and (orientation: landscape) {
-    .book,
-    .book.expanded {
-        width: auto;
-        height: 72dvh;
-        aspect-ratio: 2 / 3;
-    }
-
-    .controls {
-        bottom: 5px;
-    }
-
-    button {
-        padding: 6px 12px;
-    }
-}
 }
