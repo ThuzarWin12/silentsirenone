@@ -583,3 +583,95 @@ h1,h2,h3
         font-size: 11px;
     }
 }
+
+@media (max-width: 768px) {
+
+    /* Keep the two-page book layout */
+    .book {
+        width: 100vw;
+        height: 75vh;
+        max-height: 700px;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .book .page {
+            width: 50%;
+            height: 100%;
+            left: 50%;
+            box-sizing: border-box;
+        }
+
+    /* Keep page content inside its boundaries */
+    .page .front,
+    .page .back {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 12px 10px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        overflow-wrap: anywhere;
+        word-break: normal;
+    }
+
+    /* Headings */
+    .page h1 {
+        font-size: clamp(15px, 4vw, 21px);
+        line-height: 1.2;
+        margin: 8px 0;
+        text-align: center;
+    }
+
+    .page h2 {
+        font-size: clamp(14px, 3.5vw, 19px);
+        line-height: 1.25;
+        text-align: center;
+    }
+
+    /* Paragraphs */
+    .page p {
+        font-size: clamp(10px, 2.6vw, 13px);
+        line-height: 1.5;
+        text-align: left;
+        margin: 8px 0;
+        max-width: 100%;
+    }
+
+    /* Images must shrink to fit the page */
+    .page img {
+        display: block;
+        max-width: 100% !important;
+        max-height: 45%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        margin: 8px auto;
+    }
+
+    /* Disable desktop text wrapping around circular images */
+    .page .circleimage {
+        float: none;
+        clip-path: none;
+        shape-outside: none;
+        width: min(75%, 180px);
+        height: auto;
+        margin: 8px auto;
+    }
+
+    /* Videos */
+    .page iframe {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    /* Prevent long words and links from escaping */
+    .page a,
+    .page span,
+    .page div {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+}
