@@ -392,116 +392,235 @@ h1,h2,h3
 
 
 /* =========================================
-   4. SMALL TABLETS / LARGE PHONES
-   Portrait tablets and foldable devices
-   Width: 600px - 767px
+   MOBILE FLIP BOOK RESPONSIVE DESIGN
+   Single-page mode for mobile devices
 ========================================= */
-@media screen and (min-width: 600px) and (max-width: 767px) {
-    body {
+
+/* GENERAL MOBILE FIX */
+@media screen and (max-width: 767px) {
+
+    html, body {
+        width: 100%;
+        height: 100%;
         min-height: 100dvh;
-        height: 100dvh;
         overflow: hidden;
     }
 
-    .book {
-        width: min(76vw, 520px);
-        height: 78dvh;
-        perspective: 2000px;
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-        .book.expanded {
-            width: min(88vw, 650px);
-        }
+    /* BOOK */
+    .book,
+    .book.expanded {
+        width: min(90vw, 520px);
+        height: min(76dvh, 720px);
+        margin: auto;
+        perspective: 1600px;
+        transform: none;
+    }
 
+    /* EACH PAGE */
+    .page {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        transform-origin: left center;
+    }
+
+    /* FRONT AND BACK */
     .front,
     .back {
-        padding: 22px;
+        width: 100%;
+        height: 100%;
+        border-radius: 7px;
+        padding: 16px;
+        overflow: hidden;
     }
 
     .front {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .back {
-        font-size: 14px;
-        line-height: 1.8;
+        font-size: 12px;
+        line-height: 1.6;
     }
 
+    /* EVEN AND ODD PAGES:
+       Keep both within the mobile book */
+    .page:nth-child(even),
+    .page:nth-child(odd) {
+        left: 0;
+    }
+
+    /* CONTROLS */
     .controls {
-        bottom: 24px;
-        gap: 12px;
+        position: fixed;
+        bottom: max(12px, env(safe-area-inset-bottom));
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        justify-content: center;
+        gap: 8px;
+        z-index: 9999;
     }
 
     button {
-        padding: 12px 22px;
-        font-size: 14px;
+        padding: 10px 16px;
+        font-size: 12px;
+        white-space: nowrap;
     }
 
-    .video-overlay h2 {
-        font-size: 25px;
+    /* PAGE NUMBER */
+    .page-number {
+        bottom: 12px;
+        right: 14px;
+        font-size: 11px;
     }
 
-    .video-overlay p {
-        font-size: 14px;
+    /* IMAGES */
+    .front img,
+    .back img,
+    .tallimage {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .circleimage {
+        max-width: 45%;
+    }
+
+    /* VIDEO */
+    .video-page {
+        border-radius: 7px;
+    }
+
+    .video-overlay {
+        padding: 14px;
+    }
+
+        .video-overlay h2 {
+            font-size: 19px;
+        }
+
+        .video-overlay p {
+            font-size: 12px;
+        }
+}
+
+
+/* =========================================
+   1. SMALL PHONES: 320px - 374px
+========================================= */
+@media screen and (max-width: 374px) {
+    .book,
+    .book.expanded {
+        width: 92vw;
+        height: 70dvh;
+    }
+
+    .front,
+    .back {
+        padding: 10px;
+    }
+
+    .front {
+        font-size: 10px;
+    }
+
+    .back {
+        font-size: 10px;
+        line-height: 1.4;
+    }
+
+    button {
+        padding: 8px 11px;
+        font-size: 10px;
     }
 }
 
 
 /* =========================================
-   5. TABLETS / SMALL LAPTOPS
-   iPad portrait and similar devices
-   Width: 768px - 1024px
+   2. STANDARD PHONES: 375px - 479px
 ========================================= */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    body {
-        min-height: 100dvh;
-        height: 100dvh;
-        overflow: hidden;
+@media screen and (min-width: 375px) and (max-width: 479px) {
+    .book,
+    .book.expanded {
+        width: 90vw;
+        height: 73dvh;
+    }
+}
+
+
+/* =========================================
+   3. LARGE PHONES: 480px - 599px
+========================================= */
+@media screen and (min-width: 480px) and (max-width: 599px) {
+    .book,
+    .book.expanded {
+        width: 85vw;
+        height: 76dvh;
     }
 
+    .front,
+    .back {
+        padding: 18px;
+    }
+}
+
+
+/* =========================================
+   4. SMALL TABLETS: 600px - 767px
+========================================= */
+@media screen and (min-width: 600px) and (max-width: 767px) {
+    .book,
+    .book.expanded {
+        width: 78vw;
+        height: 78dvh;
+    }
+
+    .front,
+    .back {
+        padding: 22px;
+    }
+}
+
+
+/* =========================================
+   5. TABLETS: 768px - 1024px
+========================================= */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
     .book {
         width: min(65vw, 520px);
         height: 82dvh;
-        perspective: 2200px;
     }
 
         .book.expanded {
             width: min(78vw, 650px);
         }
+}
 
-    .front,
-    .back {
-        padding: 25px;
-    }
 
-    .front {
-        font-size: 14px;
-    }
-
-    .back {
-        font-size: 14px;
-        line-height: 1.8;
+/* =========================================
+   LANDSCAPE MOBILE
+========================================= */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+    .book,
+    .book.expanded {
+        width: auto;
+        height: 72dvh;
+        aspect-ratio: 2 / 3;
     }
 
     .controls {
-        bottom: 28px;
-        gap: 14px;
+        bottom: 5px;
     }
 
     button {
-        padding: 12px 24px;
-        font-size: 14px;
+        padding: 6px 12px;
     }
-
-    .video-overlay {
-        padding: 22px;
-    }
-
-        .video-overlay h2 {
-            font-size: 26px;
-        }
-
-        .video-overlay p {
-            font-size: 14px;
-        }
+}
 }
