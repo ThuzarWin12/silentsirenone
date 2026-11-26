@@ -140,8 +140,8 @@ body::before {
 .circleimage {
     float: left;
     
-    clip-path: circle(30%);
-    shape-outside: circle(35%);
+    clip-path: circle(50%);
+    shape-outside: circle(55%);
 }
 h1,h2,h3
 {
@@ -479,7 +479,7 @@ h1,h2,h3
     }
 
     .circleimage {
-        max-width: 45%;
+        max-width: 65%;
     }
 
     /* PAGE NUMBERS */
